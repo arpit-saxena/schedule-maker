@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Download semester schedule ics</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="bundle.js"></script>
+    </head>
+    <body>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <h5 class="my-0 mr-md-auto font-weight-normal">Arpit's website</h5>
+        </div>
+
+        <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">Schedule maker</h1>
+            <h2 class="text-muted h3">Sem 1 2020-21 | IIT Delhi</h2>
+            <p class="lead">
+                Specify course names and slot to generate an iCalendar file for your semester.
+                It can be used to add your schedule to any calendar app of your choosing, though
+                I have only tested it with Google Calendar. It will take into account all extra working days
+                and holidays. It is advised to create a new calendar to import into so it can be deleted in
+                case of an issue.
+            </p>
+            <p>
+                <b>DISCLAIMER:</b> It is advised to create a new calendar to import into so all imported events can be deleted in
+                case of an issue. While I have tried to ensure correctness, there may be some errors in the
+                schedule or slot timings. If you find any, please send me an email and I'll fix it ASAP.
+            </p>
+        </div>
+
+        <div class="container">
+            <form id="slots-form">
+                <div class="form-group">
+                    <label for="num-courses">Select number of courses</label>
+                    <input id="num-courses" type="number" class="form-control" placeholder="number of courses" required>
+                </div>
+    
+                <div id="course-slots"></div>
+    
+                <div class="form-group text-center">
+                    <input type="submit" class="btn btn-outline-dark" value="Download ics file!">
+                </div>
+            </form>
+            
+        </div>
+    </body>
+</html>
