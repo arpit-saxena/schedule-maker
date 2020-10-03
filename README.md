@@ -6,7 +6,7 @@ Generates an ICS file given a set of courses and their slots, which can be impor
 
 ```sh
 # Tab 1
-cd public
+cd docs
 python -m http.server
 # Tab 2
 npm run watch

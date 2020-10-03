@@ -1,7 +1,7 @@
 const { jsonc } = require('jsonc');
 const moment = require('moment');
 const ics = require("ics");
-const rrule = require("./public/rrule.min.js");
+const rrule = require("./docs/rrule.min.js");
 const RRule = rrule.RRule;
 const RRuleSet = rrule.RRuleSet;
 const FileSaver = require("file-saver");
