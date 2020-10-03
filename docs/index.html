@@ -32,7 +32,8 @@
         <div class="container">
             <form id="slots-form">
                 <div class="form-group">
-                    <label for="num-courses">Select number of courses</label>
+                    <b><label for="num-courses">Select number of courses</label></b>
+                    <p>Info: For slot name, write slot name in all caps. For example: C or D or AA</p>
                     <input id="num-courses" type="number" class="form-control" placeholder="number of courses" required>
                 </div>
     
@@ -42,6 +43,25 @@
                     <input type="submit" class="btn btn-outline-dark" value="Download ics file!">
                 </div>
             </form>
+        </div>
+
+        <div class="container">
+            <p>
+                <b>Steps to import on Google Calendar</b>
+                <ul>
+                    <li>Go to <a href="https://calendar.google.com">https://calendar.google.com</a> on your PC</li>
+                    <li>Click on gear icon on top right and click on settings</li>
+                    <li>On left hand side menu, click on "Add calendar" and create new calendar. Choose an appropriate name for calendar and click "Create Calendar"</li>
+                    <li>When calendar is created, click on "Import & Export" on left hand side menu</li>
+                    <li>In the "Import" section, choose the file you downloaded from this website and select the calendar you created previously. Then click import</li>
+                </ul>
+            </p>
+            <p>
+                <b>Known issues on other calendar clients</b>
+                <ul>
+                    <li>MacOS Client App does not add extra working days (e.g. Saturdays) properly</li>
+                </ul>
+            </p>
         </div>
     </body>
 </html>
