@@ -80,7 +80,6 @@ const initSchedule = async () => {
     const scheduleJSON = await getJSONC(SCHEDULE_FILE);
     scheduleJSON.startingDate = moment.utc(scheduleJSON.startingDate, DATE_FORMAT);
     scheduleJSON.endingDate = moment.utc(scheduleJSON.endingDate, DATE_FORMAT);
-    console.log(scheduleJSON.startingDate);
 
     setExcludedDates(scheduleJSON);
 
@@ -171,7 +170,6 @@ events = [];
 
 const addEvent = (name, slot) => {
     for (const sameTimeSchedule of slottingJSON[slot]) {
-        console.log(sameTimeSchedule)
         events.push({
             start: momentToArray(sameTimeSchedule[1][0]),
             end: momentToArray(sameTimeSchedule[1][1]),
@@ -239,7 +237,6 @@ const formCallback = (event) => {
     const slots = document.querySelectorAll("#course-slots .slot");
     event.preventDefault();
     for (let i = 0; i < courseNames.length; i++) {
-        console.log(courseNames[i].value, slots[i].value);
         addEvent(courseNames[i].value, slots[i].value);
     }
     const { err, value } = ics.createEvents(events);
@@ -249,7 +246,6 @@ const formCallback = (event) => {
         alert("Error occured in generation of ics file. See console for details");
     } else {
         const cal = value.replace(/^RRULE:DTSTART;.*$/gm, '').replace(/\n/gm, '\n\r');
-        console.log(cal);
         const blob = new Blob([cal], {type: "text/plain;charset=utf-8"});
         FileSaver.saveAs(blob, "schedule.ics");
     }
