@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Schedule Maker | Arpit's website</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bundle.js"></script>
     </head>
@@ -35,14 +36,16 @@
                     <b><label for="num-courses">Select number of courses</label></b>
                     <p>
                         Info: For slot name, write slot name in all caps. For example: C or D or AA <br>
-                        Currently supported slots: A, B, C, D, E, F, H, J, K, L, M, AA, AB, AC, AD
+                        Currently supported slots: A, B, C, D, E, F, H, J, K, L,
+                        M, AA, AB, AC, AD <br>
+                        <b>New: </b> Check the box before a course's name to enter custom timings and repeating days for it.
                     </p>
                     <input id="num-courses" type="number" class="form-control" placeholder="number of courses" required>
                 </div>
     
                 <div id="course-slots"></div>
     
-                <div class="form-group text-center">
+                <div class="form-group text-center m-3">
                     <input type="submit" class="btn btn-outline-dark" value="Download ics file!">
                 </div>
             </form>

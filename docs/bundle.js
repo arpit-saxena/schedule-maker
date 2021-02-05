@@ -115,11 +115,6 @@ const initSlotting = async () => {
     return slottingJSON;
 }
 
-const init = async () => {
-    await initSchedule();
-    await initSlotting();
-}
-
 const getDayEnum = (day) => {
     return RRule[day.toUpperCase()];
 }
@@ -168,21 +163,91 @@ const momentToArray = (mom) => {
 
 events = [];
 
-const addEvent = (name, slot) => {
+const addCustomEvent = (name, days, startMoment, endMoment) => {
+    events.push({
+        start: momentToArray(startMoment),
+        end: momentToArray(endMoment),
+        productId: PROD_ID,
+        title: name,
+        recurrenceRule: getRRule(days, startMoment, scheduleJSON)
+    });
+}
+
+const addSlotEvent = (name, slot) => {
     for (const sameTimeSchedule of slottingJSON[slot]) {
-        events.push({
-            start: momentToArray(sameTimeSchedule[1][0]),
-            end: momentToArray(sameTimeSchedule[1][1]),
-            productId: PROD_ID,
-            title: name,
-            recurrenceRule: getRRule(sameTimeSchedule[0], sameTimeSchedule[1][0], scheduleJSON)
-        });
+        addCustomEvent(
+            name,
+            sameTimeSchedule[0], 
+            sameTimeSchedule[1][0], 
+            sameTimeSchedule[1][1],
+        );
     }
 }
 
-const getCourseSlotInput = () => {
+const getWeekdaySelectRow = (idx) => {
     const row = document.createElement("div");
-    row.className = "row";
+    row.classList.add("row", "p-2", "weekdays");
+
+    const span = document.createElement("span");
+    span.textContent = "Repeat days:";
+    span.classList.add("col-sm");
+    row.appendChild(span);
+
+    let shortNames = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+
+    for (let i = 0; i < 7; i++) {
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = shortNames[i] + "-checkbox-" + idx;
+        checkbox.classList.add("btn-check");
+        row.appendChild(checkbox);
+
+        let label = document.createElement("label");
+        label.htmlFor = checkbox.id;
+        label.classList.add("btn", "btn-outline-primary", "col-sm", "m-1");
+        label.innerText = shortNames[i];
+        row.appendChild(label);
+    }
+
+    return row;
+}
+
+const getTimeInput = (className, idx, labelText) => {
+    const div = document.createElement("div");
+    div.classList.add("form-group", "col-sm");
+    const input = document.createElement("input");
+    input.type = "time";
+    input.classList.add("form-control", className);
+    input.id = className + "-" + idx;
+    div.appendChild(input);
+    const startTimeLabel = document.createElement("label");
+    startTimeLabel.htmlFor = input.id;
+    startTimeLabel.textContent = labelText;
+    div.appendChild(startTimeLabel);
+    return [input, div];
+}
+
+const getCourseSlotInput = (idx) => {
+    const div = document.createElement("div");
+    div.classList.add("course-input");
+
+    const row1 = document.createElement("div");
+    row1.classList.add("row", "g-3", "m-1");
+    div.appendChild(row1);
+
+    const customSlotDiv = document.createElement("div");
+    customSlotDiv.classList.add("form-check", "form-switch", "col-sm-auto", "align-middle");
+    const customSlotCheckbox = document.createElement("input");
+    customSlotCheckbox.type = "checkbox";
+    customSlotCheckbox.id = "slot-checkbox-" + idx;
+    customSlotCheckbox.classList.add("form-check-input", "custom-slot-checkbox");
+    customSlotDiv.appendChild(customSlotCheckbox);
+    const customSlotLabel = document.createElement("label");
+    customSlotLabel.htmlFor = customSlotCheckbox.id;
+    customSlotLabel.classList.add("form-check-label");
+    customSlotLabel.innerText = "Custom Slot";
+    customSlotDiv.appendChild(customSlotLabel);
+    row1.appendChild(customSlotDiv);
 
     const courseNameDiv = document.createElement("div");
     courseNameDiv.classList.add("form-group", "col-sm");
@@ -192,7 +257,7 @@ const getCourseSlotInput = () => {
     courseNameInput.placeholder = "Course name";
     courseNameInput.required = true;
     courseNameDiv.appendChild(courseNameInput);
-    row.appendChild(courseNameDiv);
+    row1.appendChild(courseNameDiv);
 
     const courseSlotDiv = document.createElement("div");
     courseSlotDiv.classList.add("form-group", "col-sm");
@@ -203,10 +268,35 @@ const getCourseSlotInput = () => {
     courseSlotInput.required = true;
     courseSlotInput.pattern = "A|B|C|D|E|F|H|J|K|L|M|AA|AB|AC|AD";
     courseSlotDiv.appendChild(courseSlotInput);
+    row1.appendChild(courseSlotDiv);
 
-    row.appendChild(courseSlotDiv);
+    const [customStartTimeInput, customStartTimeDiv] = getTimeInput("start-time", idx, "Start Time");
+    const [customEndTimeInput, customEndTimeDiv] = getTimeInput("end-time", idx, "End Time");
+    
+    const row2 = getWeekdaySelectRow(idx);
 
-    return row;
+    const customSlotCheckboxListener = (_) => {
+        if (customSlotCheckbox.checked) {
+            row1.removeChild(courseSlotDiv);
+            row1.appendChild(customStartTimeDiv);
+            row1.appendChild(customEndTimeDiv);
+            div.appendChild(row2);
+            courseSlotInput.required = false;
+            customStartTimeInput.required = true;
+            customEndTimeInput.required = true;
+        } else {
+            row1.removeChild(customStartTimeDiv);
+            row1.removeChild(customEndTimeDiv);
+            div.removeChild(row2);
+            row1.appendChild(courseSlotDiv);
+            courseSlotInput.required = true;
+            customStartTimeInput.required = false;
+            customEndTimeInput.required = false;
+        }
+    }
+    customSlotCheckbox.addEventListener("change", customSlotCheckboxListener);
+
+    return div;
 }
 
 const addNumCoursesCallback = () => {
@@ -217,8 +307,8 @@ const addNumCoursesCallback = () => {
         const currRows = inputDiv.children.length;
         if (numCourses == currRows) return;
         if (numCourses > currRows) {
-            for (let i = 0; i < numCourses - currRows; i++) {
-                inputDiv.appendChild(getCourseSlotInput());
+            for (let i = currRows; i < numCourses; i++) {
+                inputDiv.appendChild(getCourseSlotInput(i));
             }
         } else {
             while (inputDiv.children.length > numCourses) {
@@ -233,17 +323,46 @@ const addNumCoursesCallback = () => {
 }
 
 const formCallback = (event) => {
-    const courseNames = document.querySelectorAll("#course-slots .course-name");
-    const slots = document.querySelectorAll("#course-slots .slot");
     event.preventDefault();
-    for (let i = 0; i < courseNames.length; i++) {
-        addEvent(courseNames[i].value, slots[i].value);
+
+    const coursesInput = document.querySelectorAll("#course-slots .course-input");;
+
+    for (let i = 0; i < coursesInput.length; i++) {
+        const courseName = coursesInput[i].querySelector(".course-name");
+        const slot = coursesInput[i].querySelector(".slot");
+        const customSlotCheckbox = coursesInput[i].querySelector(".custom-slot-checkbox");
+        const startTime = coursesInput[i].querySelector(".start-time");
+        const endTime = coursesInput[i].querySelector(".end-time");
+        const weekDays = coursesInput[i].querySelector(".weekdays");
+
+        if (customSlotCheckbox.checked) {
+            let startMoment = moment.utc(startTime.value, "HH:mm");
+            setDate(startMoment, scheduleJSON.startingDate);
+            let endMoment = moment.utc(endTime.value, "HH:mm");
+            setDate(endMoment, scheduleJSON.startingDate);
+            
+            let days = [];
+            weekDays.querySelectorAll("input").forEach(input => {
+                if (!input.checked) return;
+                days.push(input.nextElementSibling.innerText);
+            });
+            days = days.map(getDayEnum);
+
+            if (days.length == 0) {
+                alert("Please select days for " + courseName.value);
+                return;
+            }
+
+            addCustomEvent(courseName.value, days, startMoment, endMoment);
+        } else {
+            addSlotEvent(courseName.value, slot.value);
+        }
     }
     const { err, value } = ics.createEvents(events);
     events = [];
     if (err) {
         console.error(err);
-        alert("Error occured in generation of ics file. See console for details");
+        alert("Error occurred in generation of ics file. See console for details");
     } else {
         const cal = value.replace(/^RRULE:DTSTART;.*$/gm, '').replace(/\n/gm, '\n\r');
         const blob = new Blob([cal], {type: "text/plain;charset=utf-8"});
