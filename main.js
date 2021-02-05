@@ -260,16 +260,22 @@ const getCourseSlotInput = (idx) => {
 const addNumCoursesCallback = () => {
     const numCoursesInput = document.getElementById("num-courses");
     const inputDiv = document.getElementById("course-slots")
+    let deletedElements = [];
     const callback = (event) => {
         const numCourses = numCoursesInput.value;
         const currRows = inputDiv.children.length;
         if (numCourses == currRows) return;
         if (numCourses > currRows) {
             for (let i = currRows; i < numCourses; i++) {
-                inputDiv.appendChild(getCourseSlotInput(i));
+                if (deletedElements.length > 0) {
+                    inputDiv.appendChild(deletedElements.pop());
+                } else {
+                    inputDiv.appendChild(getCourseSlotInput(i));
+                }
             }
         } else {
             while (inputDiv.children.length > numCourses) {
+                deletedElements.push(inputDiv.lastChild);
                 inputDiv.lastChild.remove();
             }
         }
