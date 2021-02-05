@@ -162,7 +162,7 @@ const getWeekdaySelectRow = (idx) => {
 
         let label = document.createElement("label");
         label.htmlFor = checkbox.id;
-        label.classList.add("btn", "btn-outline-primary", "col-sm", "m-1");
+        label.classList.add("btn", "btn-outline-primary", "col", "m-1");
         label.innerText = shortNames[i];
         row.appendChild(label);
     }
