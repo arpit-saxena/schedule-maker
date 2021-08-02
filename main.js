@@ -122,9 +122,19 @@ const momentToArray = (mom) => {
 events = [];
 
 const addCustomEvent = (name, days, startMoment, endMoment) => {
+    // Fix the date of the first event
+    // Assumes that first day in the days array is the earliest
+    // day.
+    // Also assumes the semester starts on Monday.
+    // FIXME: Fix this mess. (Probably will never get fixed)
+    let startMomentActual = startMoment.clone();
+    startMomentActual.add(days[0].weekday, 'days');
+    let endMomentActual = endMoment.clone();
+    endMomentActual.add(days[0].weekday, 'days');
+
     events.push({
-        start: momentToArray(startMoment),
-        end: momentToArray(endMoment),
+        start: momentToArray(startMomentActual),
+        end: momentToArray(endMomentActual),
         productId: PROD_ID,
         title: name,
         recurrenceRule: getRRule(days, startMoment, scheduleJSON)
