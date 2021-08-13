@@ -3,7 +3,7 @@
     "endingDate": "11/11/2021", // Inclusive
     "excludedDates": [
         ["15/08/2021"], // Independence Day
-        ["19/08/2021"], // Muharram
+        ["20/08/2021"], // Muharram
         ["30/08/2021"], // Janmashtami
         ["19/09/2021", "23/09/2021"], // Minor Test
         ["02/10/2021"], // Gandhi Jayanti
@@ -15,7 +15,7 @@
         ["19/11/2021"]  // Guru Nanak Jayanti
     ],
     "extraDays": [ // [Date, Day working as]
-        ["21/08/2021", "Th"],
+        ["21/08/2021", "Fr"],
         ["04/09/2021", "Mo"],
         ["23/10/2021", "Fr"],
         ["10/11/2021", "Fr"]
