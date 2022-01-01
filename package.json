@@ -1,0 +1,24 @@
+{
+  "name": "schedule-generator",
+  "version": "0.0.1",
+  "description": "Generate ics file based on recurrence and excluding certain dates",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify main.js -o docs/bundle.js ",
+    "watch": "watchify main.js -o docs/bundle.js"
+  },
+  "author": "Arpit Saxena",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^16.5.2",
+    "dayjs": "^1.9.1",
+    "file-saver": "^2.0.2",
+    "ics": "^2.25.0",
+    "jsonc": "^2.0.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.0",
+    "rrule": "^2.6.6",
+    "watchify": "^3.11.1"
+  }
+}

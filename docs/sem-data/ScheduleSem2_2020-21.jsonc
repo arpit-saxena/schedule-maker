@@ -1,0 +1,21 @@
+{
+    "startingDate": "03/02/2021",
+    "endingDate": "06/05/2021", // Inclusive
+    "excludedDates": [
+        ["14/04/2021"], // No class days
+        ["15/03/2021", "19/03/2021"], // Minor Test
+        ["26/03/2021", "27/03/2021"], // No class days (Project mid term)
+        ["28/03/2021", "30/03/2021"], // Mid-semester break
+        ["29/03/2021"], // Holi
+        ["02/04/2021"], // Good Friday
+        ["21/04/2021"], // Ram Navami
+        ["25/04/2021"] // Mahavir Jayanti
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["20/03/2021", "Mo"],
+        ["03/04/2021", "Fr"],
+        ["17/04/2021", "We"],
+        ["24/04/2021", "Tu"],
+        ["06/05/2021", "Fr"]
+    ]
+}

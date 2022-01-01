@@ -1,0 +1,27 @@
+{
+    "startingDate": "28/09/2020",
+    "endingDate": "04/01/2021", // Inclusive
+    "excludedDates": [
+        ["23/10/2020", "24/10/2020"], // No class days
+        ["08/11/2020", "11/11/2020"], // Minor Test
+        ["29/11/2020", "13/12/2020"], // Mid-semester break
+        ["31/12/2020", "01/01/2021"], // No class days
+        ["02/10/2020"], // Gandhi Jayanti
+        ["25/10/2020"], // Dussehra
+        ["30/10/2020"], // Milad un-Nabi
+        ["14/11/2020"], // Diwali
+        ["30/11/2020"], // Guru Nanak's Birthday
+        ["25/12/2020"], // Christmas Day
+        ["26/01/2021"] // Republic Day
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["03/10/2020", "Fr"],
+        ["10/10/2020", "Tu"],
+        ["17/10/2020", "Fr"],
+        ["31/10/2020", "Fr"],
+        ["28/11/2020", "Th"],
+        ["19/12/2020", "We"],
+        ["26/12/2020", "Fr"],
+        ["02/01/2021", "Fr"]
+    ]
+}

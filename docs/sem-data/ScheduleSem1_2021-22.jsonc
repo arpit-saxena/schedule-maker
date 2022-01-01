@@ -1,0 +1,23 @@
+{
+    "startingDate": "09/08/2021",
+    "endingDate": "11/11/2021", // Inclusive
+    "excludedDates": [
+        ["15/08/2021"], // Independence Day
+        ["20/08/2021"], // Muharram
+        ["30/08/2021"], // Janmashtami
+        ["19/09/2021", "23/09/2021"], // Minor Test
+        ["02/10/2021"], // Gandhi Jayanti
+        ["15/10/2021"], // Dussehra
+        ["17/10/2021", "19/10/2021"], // Semester Break
+        ["19/10/2021"], // Milad-un-Nabi
+        ["04/11/2021"], // Diwali
+        ["05/11/2021"], // Govardhan Puja
+        ["19/11/2021"]  // Guru Nanak Jayanti
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["21/08/2021", "Fr"],
+        ["04/09/2021", "Mo"],
+        ["23/10/2021", "Fr"],
+        ["10/11/2021", "Fr"]
+    ]
+}
