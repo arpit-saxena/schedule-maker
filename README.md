@@ -26,6 +26,8 @@ One can also use this data for all sorts of applications.
 
 Anyone is welcome to contribute, see open issues for things that require work.
 
+See [AUTHORS.md](./AUTHORS.md) for people who have contributed to the project.
+
 ## For local development
 
 Firstly, install the npm packages by running `npm install`, then to run the website
