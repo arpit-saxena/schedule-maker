@@ -1,0 +1,20 @@
+{
+    "startingDate": "03/01/2022",
+    "endingDate": "01/04/2022", // Inclusive
+    "excludedDates": [
+        ["14/02/2022", "17/02/2022"], // Minor Test
+        ["18/02/2022", "19/02/2022"], // No class days (Project mid term)
+        ["26/02/2022", "01/03/2022"], // Mid-semester break
+        ["14/01/2022"], // Makar Sankranti
+        ["26/01/2022"], // Republic Day 
+        ["01/03/2022"], // Maha Shivratri
+        ["18/03/2022"] // Holi
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["15/01/2022", "Fr"],
+        ["29/01/2022", "We"],
+        ["05/03/2022", "Tu"],
+        ["12/03/2022", "Mo"],
+        ["26/03/2022", "Fr"]
+    ]
+}

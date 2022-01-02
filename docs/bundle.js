@@ -49,7 +49,8 @@ const RRuleSet = rrule.RRuleSet;
 const FileSaver = require("file-saver");
 
 const DATA_FOLDER = "sem-data/";
-const SCHEDULE_FILE = DATA_FOLDER + "ScheduleSem1_2021-22.jsonc"
+
+const SCHEDULE_FILE = DATA_FOLDER + "ScheduleSem2_2021-22.jsonc"
 const SLOTTING_FILE = DATA_FOLDER + "SlottingPattern.jsonc"
 
 const DATE_FORMAT = "DD/MM/YYYY";
