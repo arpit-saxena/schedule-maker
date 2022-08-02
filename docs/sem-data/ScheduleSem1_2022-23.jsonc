@@ -1,0 +1,23 @@
+{
+    "startingDate": "03/08/2022",
+    "endingDate": "15/11/2022", // Inclusive
+    "excludedDates": [
+        ["09/08/2022"], // Muharram
+        ["11/08/2022"], // Raksha Bandhan
+        ["15/08/2022"], // Independence Day
+        ["19/08/2022"], // Janmashtami
+        ["25/09/2022", "28/09/2022"], // Minor Test
+        ["02/10/2022"], // Gandhi Jayanti
+        ["02/10/2022", "05/10/2022"], // Semester Break
+        ["05/10/2022"], // Dussehra
+        ["09/10/2022"], // Milad-un-Nabi
+        ["24/10/2022"], // Diwali
+        ["08/11/2022"]  // Guru Nanak Jayanti
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["06/08/2022", "Tu"],
+        ["29/09/2022", "Th"],
+        ["08/10/2022", "Tu"],
+        ["29/10/2022", "Mo"]
+    ]
+}
