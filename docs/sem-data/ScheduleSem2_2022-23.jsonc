@@ -1,0 +1,24 @@
+{
+    "startingDate": "03/01/2023",
+    "endingDate": "29/04/20223", // Inclusive
+    "excludedDates": [
+        ["06/02/2023", "09/02/2023"], // Minor Test 1
+        ["24/02/2023", "25/02/2023"], // No class days (Project mid term)
+        ["04/03/2023", "12/03/2023"], // Mid-semester break
+        ["23/03/2023", "26/03/2023"], // Minor Test 2
+        ["26/01/2023"], // Republic Day 
+        ["08/03/2023"], // Holi
+        ["30/03/2023"], // Ram Navami
+        ["04/04/2023"], // Mahavir Jayanti
+        ["07/04/2023"], // Good Friday
+        ["14/04/2023"], // Vaisakhi
+        ["22/04/2023"], // Idu'l Fitr
+        ["05/05/2023"] // Budha Purnima
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["28/01/2023", "Th"],
+        ["29/03/2023", "Th"],
+        ["01/04/2023", "Fr"],
+        ["29/04/2023", "Fr"]
+    ]
+}
