@@ -1,6 +1,6 @@
 {
     "startingDate": "03/01/2023",
-    "endingDate": "29/04/20223", // Inclusive
+    "endingDate": "29/04/2023", // Inclusive
     "excludedDates": [
         ["06/02/2023", "09/02/2023"], // Minor Test 1
         ["24/02/2023", "25/02/2023"], // No class days (Project mid term)
