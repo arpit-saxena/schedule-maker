@@ -1,0 +1,26 @@
+{
+    "startingDate": "24/07/2023",
+    "endingDate": "17/11/2023", // Inclusive
+    "excludedDates": [
+        ["12/09/2023", "17/09/2023"], // Minor Test
+        ["22/09/2023", "23/09/2023"], // No class days (Project mid term)
+        ["30/09/2023", "08/10/2023"], // Mid-semester break
+        ["23/10/2023"],               // No Class Day
+        ["29/07/2023"],               // Muharram
+        ["15/08/2023"],               // Independence Day
+        ["07/09/2023"],               // Janmashtami
+        ["28/09/2023"],               // Milad-un-Nabi
+        ["02/10/2023"],               // Gandhi’s Birthday
+        ["24/10/2023"],               // Dussehra
+        ["12/11/2023"],               // Diwali
+        ["13/11/2023"],               // Govardhan Puja
+        ["27/11/2023"]                // Guru Nanak’s Birthday
+
+    ],
+    "extraDays": [ // [Date, Day working as]
+        ["19/08/2023", "Tu"],
+        ["11/09/2023", "Th"],
+        ["27/09/2023", "Th"],
+        ["16/11/2023", "Mo"]
+    ]
+}
